@@ -1,6 +1,12 @@
+document.addEventListener('DOMContentLoaded', updateLocalStorage)
 
 
-const form = {};
+
+
+
+
+
+class form {}
 // add button and areatext to js
 form.noteText = document.querySelector(`#formNoteText1`);
 form.noteText2 = document.querySelector(`#formNoteText2`);
@@ -27,6 +33,9 @@ function addNote() {
   deleteButton.classList.add(`note-delete`);
   deleteButton.innerHTML = `&times;`;
 
+  updateLocalStorage()
+
+
   note.appendChild(deleteButton);  
   notes.appendChild(note);
 
@@ -37,6 +46,11 @@ function addNote() {
   form.noteText2.focus();
 // adding delate button
   addListenerDeleteButton(deleteButton);
+}
+
+
+function updateLocalStorage(){
+    localStorage.setItem('notes', JSON.stringify(notes))
 }
 
 function addListenerDeleteButton(deleteButton) {
